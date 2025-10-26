@@ -318,7 +318,7 @@ opacity: 1;
     color: #915C83; /* Bright Fuchsia */
     font-weight: 600;
       /* Increase the size here */
-    font-size: 1.4rem; /* Significantly larger font size */
+    font-size: 2.84rem; /* Significantly larger font size */
     text-shadow:
         0 0 8px rgba(255, 0, 255, 0.7), /* Fuchsia glow with some transparency */
         0 0 15px rgba(255, 0, 255, 0.4); /* Larger, softer outer glow */
@@ -340,6 +340,34 @@ opacity: 1;
     display: flex; /* Enables flexbox layout for the list item */
     justify-content: space-between; /* Pushes content to the ends */
     align-items: center; /* Vertically aligns items */
+}  
+
+/* NEW: Dedicated container for the date and time */
+.time-display-row {
+    display: flex;
+    justify-content: space-between; /* Pushes content to the ends */
+    align-items: baseline; /* Aligns items vertically */
+    /* Add some margin below the "Pick your preference" heading */
+    margin: 0.2rem 0 0.8rem 0; 
+    padding: 0 0 5px 0; /* Add slight padding at the bottom */
+}
+
+/* Ensure the date text is styled correctly */
+.time-display-row span {
+    font-size: 0.75rem; /* Matches your other list item text size */
+    color: #555; /* Matches your other list item text color */
+}
+
+/* Existing Neon Time CSS (unchanged, just ensuring it's present) */
+.neon-time {
+    color: #FF00FF;
+    font-weight: 600;
+    font-size: 1.1rem; /* The larger font size */
+    text-shadow:
+        0 0 8px rgba(255, 0, 255, 0.7),
+        0 0 15px rgba(255, 0, 255, 0.4);
+    transition: text-shadow 0.3s ease-in-out;
+    animation: neon-pulse 1.5s ease-in-out infinite alternate;
 }  
 </style>
 
@@ -382,18 +410,19 @@ gtag('config', 'G-QL72FZ9YZ2');
 <li>⤷ Float Free </li>
 <li>⤷ Monthly </li>
 <li>⤷ Motivate yourself </li> </ul>
-<h4>Pick your preference  </h4>
-<ul class="features">
-<li class="time-row">
+
+ <h4>Pick your preference  </h4>
+
+<div class="time-display-row">
     <span>Sunday, 26 Oct 2025</span>
     <span class="neon-time">7-7:40 PM</span>
-</li>  
-<ul class="features">
+</div>
+
 <ul class="timeline">
-<li>Happening monthly</li>
-<li>join whatsapp 💬 </li> 
-<li class="location-text"><strong>📍 Zoom | Online</strong></li>
-</ul>
+    <li>Happening monthly</li>
+    <li><a href="https://wa.me/919818503888?text=I'd%20like%20to%20join%20the%20Sunday%20Sahaj%20WhatsApp%20group" target="_blank">join whatsapp 💬</a></li>
+    <li class="location-text"><strong>📍 Zoom | Online</strong></li>
+</ul> 
 <h4 class="queries-text">Queries & help 9818503888</h4>
 <div class="footer"> 😌 40 min a day | ♡ Online Session <br>
 ॐ  Jai Guru Dev ॐ
