@@ -313,7 +313,27 @@ opacity: 1;
   font-weight: 380;
 }
 
+.neon-time {
+    color: #39ff14; /* Neon Green: very vibrant */
+    font-weight: 600;
+    text-shadow:
+        0 0 5px #39ff14,    /* Inner light */
+        0 0 10px #39ff14,   /* Mid glow */
+        0 0 20px #21c902,   /* Outer glow */
+        0 0 40px #21c902;
+    transition: text-shadow 0.3s ease-in-out;
+}
 
+/* Optional: Subtle pulsing animation */
+@keyframes neon-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+.neon-time {
+    animation: neon-pulse 1.5s ease-in-out infinite alternate;
+}
+  
 </style>
 
 <!-- Google tag (gtag.js) -->
@@ -357,7 +377,7 @@ gtag('config', 'G-QL72FZ9YZ2');
 <li>⤷ Motivate yourself </li> </ul>
 <h4>Pick your preference  </h4>
 <ul class="features">
-<li> Sunday, 26 Oct 2025  7-7:40 PM </li>
+<li> Sunday, 26 Oct 2025  <span class="neon-time">7-7:40 PM</span> </li>
 <ul class="features">
 <ul class="timeline">
 <li>Happening monthly</li>
