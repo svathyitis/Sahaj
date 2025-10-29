@@ -4,7 +4,7 @@
 <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title> Sahaj with VM </title>
+<title>Sahaj with VM</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
 <style>
 :root {
@@ -17,19 +17,16 @@
 --box-bg: #ffffff;
 }
 
-* {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
 font-family: 'Inter', sans-serif;
 background: var(--bg);
-color: var(--text); 
+color: var(--text);
 padding: 22px 14px;
 }
 
+/* --- Card --- */
 .iphone-frame {
 background: var(--box-bg);
 border-radius: 36px;
@@ -39,62 +36,70 @@ margin: 0 auto 32px auto;
 box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
 padding: 26px 20px;
 border: 1px solid var(--border);
+position: relative;
+z-index: 1;
+overflow: hidden;
 }
 
-h1 {
-font-size: 1.375rem;
-font-weight: 550;
-margin-bottom: 0.25rem;
+.iphone-frame::after {
+content: "";
+position: absolute;
+top: 0; left: 0; right: 0; bottom: 0;
+border-radius: 32px;
+pointer-events: none;
+z-index: -1;
+border: 1.5px solid transparent;
+background: linear-gradient(135deg, #9089f5, #f093fb, #9089f5) border-box;
+mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+-webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+mask-composite: exclude;
+-webkit-mask-composite: destination-out;
+animation: subtlePulse 6s ease-in-out infinite;
 }
 
-h2 {
-font-size: 1.1rem;
-font-weight: 440;
-margin-bottom: 0.4rem;
+@keyframes subtlePulse {
+0%, 100% { opacity: 0.2; }
+50% { opacity: 0.4; }
 }
 
-h3 {
-font-size: 0.9rem;
-font-weight: 370;
-margin: 1rem 0 0.3rem;
+/* --- Video Card (matches design) --- */
+.video-card {
+position: relative;
+width: 100%;
+max-width: 390px;
+aspect-ratio: 9 / 16;
+margin: 0 auto 32px auto;
+border-radius: 36px;
+border: 1px solid var(--border);
+background: var(--box-bg);
+box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+overflow: hidden;
 }
 
-h3 + h3 {
-  margin-top: 0; /* remove top margin of second h3 */
+.video-card video {
+width: 100%;
+height: 100%;
+object-fit: cover;
+border: none;
+outline: none;
+display: block;
 }
 
-h4 {
-font-size: 0.65rem;
-font-weight: 380;
-margin: 0.5rem 0;
-}
+/* --- Typography etc. --- */
+h1 { font-size: 1.375rem; font-weight: 550; margin-bottom: 0.25rem; }
+h2 { font-size: 1.1rem; font-weight: 440; margin-bottom: 0.4rem; }
+h3 { font-size: 0.9rem; font-weight: 370; margin: 1rem 0 0.3rem; }
+h3 + h3 { margin-top: 0; }
+h4 { font-size: 0.65rem; font-weight: 380; margin: 0.5rem 0; }
+h5 { font-size: 0.5rem; font-weight: 500; margin: 0.8rem 0 0.3rem; }
 
-h5 {
-font-size: 0.5rem;
-font-weight: 500;
-margin: 0.8rem 0 0.3rem;
-}
-
-.subtitle {
-font-size: 0.875rem;
-color: var(--muted);
-margin-bottom: 1rem;
-}
-
-.info-block {
-margin-bottom: 1.2rem;
-}
-
-.info-block p {
-font-size: 0.92rem;
-line-height: 1.5;
-}
+.subtitle { font-size: 0.875rem; color: var(--muted); margin-bottom: 1rem; }
 
 .button {
 display: inline-block;
 background-color: var(--accent);
 color: white;
-padding: 0.55rem 1.0rem;
+padding: 0.55rem 1rem;
 border-radius: 10px;
 text-decoration: none;
 font-size: 0.65rem;
@@ -102,132 +107,45 @@ font-weight: 550;
 margin: 0.65rem 0;
 transition: background 0.2s ease;
 }
+.button:hover { background-color: var(--accent-hover); }
 
-.button:hover {
-background-color: var(--accent-hover);
-}
-
-ul.timeline, ul.features {
-list-style: none;
-padding-left: 0;
-margin: 0.5rem 0 0;
-}
-
-.timeline li, .features li {
-font-size: 0.75rem;
-padding: 3px 0;
-}
-
-.features li {
-color: #555;
-}
-
-.copy-box {
-display: flex;
-align-items: center;
-gap: 8px;
-margin-top: 1.2rem;
-}
-
-.copy-input {
-flex: 1;
-padding: 8px 12px;
-font-size: 0.75rem;
-border: 1px solid var(--border);
-border-radius: 10px;
-background: #f9fafc;
-font-family: monospace;
-}
-
-.copy-btn {
-padding: 8px 12px;
-background-color: #6a5799;
-color: #333;
-font-size: 0.7rem;
-font-weight: 600;
-border: none;
-border-radius: 10px;
-cursor: pointer;
-}
-
-.copy-btn:hover {
-background-color: #6a5795;
-color: white;
-}
-
-.wa-icon {
-width: 22px;
-height: 22px;
-display: inline-block;
-background: url('https://img.icons8.com/color/48/000000/whatsapp--v1.png') no-repeat center center;
-background-size: contain;
-cursor: pointer;
-}
+ul.timeline, ul.features { list-style: none; padding-left: 0; margin: 0.5rem 0 0; }
+.timeline li, .features li { font-size: 0.75rem; padding: 3px 0; }
+.features li { color: #555; }
 
 .footer {
 font-size: 0.65rem;
 color: var(--muted);
 text-align: center;
-margin-top: 0.8rem;      /* reduced from 1.8rem */
-margin-bottom: 0.5rem;   /* add this line if not present */
-line-height: 1.2;  
+margin-top: 0.8rem;
+margin-bottom: 0.5rem;
+line-height: 1.2;
 }
 
-.iphone-frame {
-position: relative;
-z-index: 1;
-border-radius: 36px;
-overflow: hidden;
-border: 1px solid var(--border); /* keep existing border */
-box-shadow: 0 0 0.5px rgba(144, 137, 245, 0.5);
+/* Neon time text */
+.neon-time {
+color: #915C83;
+font-weight: 600;
+font-size: 1.12rem;
+text-shadow:
+  0 0 8px rgba(255, 0, 255, 0.7),
+  0 0 15px rgba(255, 0, 255, 0.4);
+animation: neon-pulse 1.5s ease-in-out infinite alternate;
 }
 
-.iphone-frame::after {
-content: "";
-position: absolute;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-border-radius: 32px;
-pointer-events: none;
-z-index: -1;
-border: 1.5px solid transparent;
-background: linear-gradient(135deg, #9089f5, #f093fb, #9089f5) border-box;
-mask: 
-linear-gradient(#fff 0 0) padding-box, 
-linear-gradient(#fff 0 0);
--webkit-mask: 
-linear-gradient(#fff 0 0) padding-box, 
-linear-gradient(#fff 0 0);
-mask-composite: exclude;
--webkit-mask-composite: destination-out;
-animation: subtlePulse 6s ease-in-out infinite;
+@keyframes neon-pulse {
+0%, 100% { opacity: 1; }
+50% { opacity: 0.8; }
 }
 
-@keyframes subtlePulse {
-0%, 100% {
-opacity: 0.2;
-}
-50% {
-opacity: 0.4;
-}
+/* Flex alignment fix */
+.time-row {
+display: flex;
+justify-content: space-between;
+align-items: center;
 }
 
-.copy-input, .copy-btn {
-transition: background 0.3s, color 0.3s;
-}
-
-.location-text, .queries-text {
-color: var(--location-color);
-}
-
-body.dark h1,
-body.dark h2,
-body.dark h3 {
-color: #b69ad4;
-}
-
+/* Social Icons */
 .social-icons {
 display: flex;
 justify-content: center;
@@ -242,212 +160,41 @@ fill: var(--accent);
 transition: fill 0.3s ease;
 }
 
-body.dark .icon {
-fill: #b69ad4;
-}
+.icon:hover { fill: var(--accent-hover); }
 
-.icon:hover {
-fill: var(--accent-hover);
-}
-
-/* Container styling */
-.subtle-card-with-text {
-position: relative;
-border-radius: 20px;
-overflow: hidden;
-}
-
-/* Image animation */
-.subtle-card-with-text img {
-width: 100%;
-border-radius: 20px;
-transition: transform 0.4s ease, box-shadow 0.4s ease;
-animation: fadeInSubtle 0.8s ease-out forwards;
-opacity: 0;
-transform: translateY(10px);
-}
-
-/* Hover effects */
-.subtle-card-with-text:hover img {
-transform: scale(1.03);
-box-shadow: 0 0 25px rgba(180, 120, 255, 0.3);
-}
-
-/* Optional glowing animation */
-@keyframes fadeInSubtle {
-to {
-opacity: 1;
-transform: translateY(0);
-}
-}
-
-/* Optional title overlay */
-.overlay-text {
-position: absolute;
-bottom: 12px;
-left: 0;
-width: 100%;
-text-align: center;
-font-size: 1.2rem;
-color: #ffffffdd;
-font-family: 'Playfair Display', serif;
-opacity: 0;
-transition: opacity 0.4s ease;
-}
-
-.subtle-card-with-text:hover .overlay-text {
-opacity: 1;
-}
-.tap-in-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap; /* Optional: allow wrapping on small screens */
-  margin-top: 0.6rem;
-  margin-bottom: 0.6rem;
-}
-
-.tap-in-row h4 {
-  margin: 0;
-  font-size: 0.65rem;
-  font-weight: 380;
-}
-
- /* Antique Fuchsia Neon-ish Style */
-.neon-time {
-    color: #915C83; /* Bright Fuchsia */
-    font-weight: 600;
-    font-size: 1.12rem;
-    text-shadow:
-        0 0 8px rgba(255, 0, 255, 0.7), /* Fuchsia glow with some transparency */
-        0 0 15px rgba(255, 0, 255, 0.4); /* Larger, softer outer glow */
-    transition: text-shadow 0.3s ease-in-out;
-}
-
-/* You can keep the pulsing animation or remove it if you prefer a static glow */
-@keyframes neon-pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.8; }
-}
-
-.neon-time {
-    animation: neon-pulse 1.5s ease-in-out infinite alternate;
-} 
-  
-/* New CSS for Alignment */
-.time-row {
-    display: flex; /* Enables flexbox layout for the list item */
-    justify-content: space-between; /* Pushes content to the ends */
-    align-items: center; /* Vertically aligns items */
-
-  .video-card {
-  position: relative;
-  width: 100%;
-  max-width: 390px;
-  aspect-ratio: 9 / 16;
-  border-radius: 24px;
-  overflow: hidden;
-  margin: 0 auto 28px auto;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-  background: #fff; /* match other cards */
-}
-
-.video-card video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  border: none;
-  border-radius: 0; /* ✅ remove inner rounding */
-  background-color: #fff; /* same as card to blend */
-}
-
-
-/* new wrapper to handle the video neatly */
-.video-wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  border-radius: inherit;
-}
-
-.video-wrapper video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  border: none;
-  outline: none;
-}
-
-  
 </style>
 
-<!-- Google tag (gtag.js) -->
+<!-- Google tag -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-QL72FZ9YZ2"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-
 gtag('config', 'G-QL72FZ9YZ2');
 </script>
-
 </head>
 
 <body>
 
-<!-- Moon Toggle (Vector style) -->
-<div id="mode-toggle" style="
- position: relative;
- width: 100%;
- max-width: 390px;
- margin: 0 auto;
- display: flex;
- justify-content: flex-end;
- padding: 16px 22px;
-">
-<svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#6a5799" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon" style="cursor: pointer; transition: transform 0.3s ease;">
+<!-- Moon Toggle -->
+<div id="mode-toggle" style="width:100%;max-width:390px;margin:0 auto;display:flex;justify-content:flex-end;padding:16px 22px;">
+<svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#6a5799" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon" style="cursor:pointer;transition:transform 0.3s ease;">
 <path d="M21 12.79A9 9 0 0112.21 3a7 7 0 100 14.58A9 9 0 0021 12.79z"/>
 </svg>
 </div>
 
-<!-- Video Showcase (standalone, clean layout) -->
-<div style="display: flex; justify-content: center; padding: 20px 0;">
-  <div class="video-card" style="
-    max-width: 230px;
-    aspect-ratio: 9 / 16;
-    border-radius: 24px;
-    overflow: hidden;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-  ">
-<div style="display: flex; justify-content: center; padding: 20px 0;">
-  <div class="video-card">
-    <video
-      src="https://files.catbox.moe/1ftwsg.mp4"
-      controls
-      playsinline
-      webkit-playsinline
-      preload="auto"
-      style="
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        border-radius: 24px;
-        background-color: #000;
-      "
-    ></video>
-  </div>
+<!-- ✅ Clean Video Showcase -->
+<div class="video-card">
+  <video
+    src="https://files.catbox.moe/1ftwsg.mp4"
+    controls
+    playsinline
+    webkit-playsinline
+    preload="auto"
+  ></video>
 </div>
 
-  </div>
-</div>
-
-
-
-  
- <!-- Sahaj Monthly Follow-up Card -->
+<!-- Oct Recap -->
 <div class="iphone-frame">
 <h1>Oct Recap</h1>
 <p class="subtitle">Sunday Sahaj </p>
@@ -456,112 +203,71 @@ gtag('config', 'G-QL72FZ9YZ2');
 <ul class="features">
 <li>⤷ Float Free </li>
 <li>⤷ Monthly </li>
-<li>⤷ Motivate yourself </li> </ul>
-<h4>Pick your preference  </h4>
+<li>⤷ Motivate yourself </li>
+</ul>
+<h4>Pick your preference</h4>
 <ul class="features">
- <li>Sunday, 26 Oct 2025</li> 
-<li class="time-row">
-    <span class="neon-time">7-7:40 PM</span>
-</li>   
-<ul class="features">
+<li>Sunday, 26 Oct 2025</li> 
+<li class="time-row"><span class="neon-time">7-7:40 PM</span></li>
 <ul class="timeline">
 <li>Happening monthly</li>
-<li>Meeting ID: 837 0631 9575 </li> 
+<li>Meeting ID: 837 0631 9575 </li>
 <li> DM for password or link </li>
-<li class="location-text"><strong>📍 Zoom | Online</strong></li> </ul> </ul>
-<li class="time-row">
-    <span class="neon-time">’Til Nov! 👋 </span>
-</li>  
+<li class="location-text"><strong>📍 Zoom | Online</strong></li>
+</ul>
+<li class="time-row"><span class="neon-time">’Til Nov! 👋</span></li>
 <h4 class="queries-text">Queries & help 9818503888</h4>
-<div class="footer"> 🙈 40 min only | ♡ Online Session <br>
-ॐ  Jai Guru Dev ॐ
-</div> 
+<div class="footer"> 🙈 40 min only | ♡ Online Session <br> ॐ Jai Guru Dev ॐ </div> 
 </div>
 
-<!-- Sahaj Meditation Card -->
+<!-- Nov Sahaj -->
 <div class="iphone-frame">
 <h1>Nov Sahaj </h1>
 <p class="subtitle">with Vishal Merani/ Team</p>
 <h3>Lapse into meditation in minutes</h3>
 <p class="subtitle">Feel Good 😌 Live Light 🪶</p>
 <ul class="features">
-<li>⤷ Personal</li>
-<li>⤷ Customized</li>
-<li>⤷ Yours</li> </ul>
-<h4>Pick your preference  </h4>
-
+<li>⤷ Personal</li><li>⤷ Customized</li><li>⤷ Yours</li></ul>
+<h4>Pick your preference</h4>
 <ul class="features">
- <li> 29 Oct - 31 Oct </li>
-<a href="https://www.artofliving.org/in-en/program/909425" class="button" target="_blank"> 7 AM – 8:45 AM </a> 
-  <li> 10 Nov - 12 Nov </li>
-<a href="https://www.artofliving.org/in-en/program/922799" class="button" target="_blank"> 4:30 PM – 6:00 PM </a>  
-   <li> 6 Nov - 8 Nov </li>
-<a href="https://www.artofliving.org/in-en/program/923069" class="button" target="_blank"> 7 PM – 9 PM </a> 
-  <li> 7 Nov - 9 Nov </li>
-<a href="https://www.artofliving.org/in-en/program/923075" class="button" target="_blank"> 6:30 PM – 8:30 PM </a> </ul> 
-  
- <ul class="features">
+<li>29 Oct - 31 Oct</li>
+<a href="https://www.artofliving.org/in-en/program/909425" class="button" target="_blank">7 AM – 8:45 AM</a>
+<li>10 Nov - 12 Nov</li>
+<a href="https://www.artofliving.org/in-en/program/922799" class="button" target="_blank">4:30 PM – 6:00 PM</a>
+<li>6 Nov - 8 Nov</li>
+<a href="https://www.artofliving.org/in-en/program/923069" class="button" target="_blank">7 PM – 9 PM</a>
+<li>7 Nov - 9 Nov</li>
+<a href="https://www.artofliving.org/in-en/program/923075" class="button" target="_blank">6:30 PM – 8:30 PM</a>
+</ul>
 <ul class="timeline">
 <li>Happening monthly-ish, tops</li>
-<li>Zoom Meeting ID: 837 0631 9575 </li> 
+<li>Zoom Meeting ID: 837 0631 9575 </li>
 <li class="location-text"><strong>📍 Zoom | Online</strong></li>
 </ul>
-<h4 class="queries-text">Queries & help @  7406198666, 9818503888</h4>
-<div class="footer"> 😌 3 days, 2 hours a day | ♡ Online Sessions <br>
-ॐ  Jai Guru Dev ॐ
-</div>
+<h4 class="queries-text">Queries & help @ 7406198666, 9818503888</h4>
+<div class="footer"> 😌 3 days, 2 hours a day | ♡ Online Sessions <br> ॐ Jai Guru Dev ॐ </div>
 </div>
 
-<!-- Social - Card  -->
-<div class="iphone-frame" style="text-align: center; padding-top: 24px;">
+<!-- Social Card -->
+<div class="iphone-frame" style="text-align:center;padding-top:24px;">
 <h1>To stay connected,</h1>
 <h2>@MeraniVishal</h2>
 <p class="subtitle">Explore insights, updates & posts</p>
 
-<div class="social-icons" style="margin: 18px auto;">
+<div class="social-icons" style="margin:18px auto;">
 <a href="https://www.instagram.com/meranivishal/" target="_blank" aria-label="Instagram">
-<svg class="icon" viewBox="0 0 24 24"><path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10zM12 7c-2.8 0-5 2.2-5 5s2.2 5 5 5 5-2.2 5-5-2.2-5-5-5zm0 2c1.7 0 3 1.3 3 3s-1.3 3-3 3-3-1.3-3-3 1.3-3 3-3zm4.5-3c-.3 0-.5.2-.5.5s.2.5.5.5.5-.2.5-.5S16.8 6 16.5 6z"/></svg>
-</a>
+<svg class="icon" viewBox="0 0 24 24"><path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10zM12 7c-2.8 0-5 2.2-5 5s2.2 5 5 5 5-2.2 5-5-2.2-5-5-5zm0 2c1.7 0 3 1.3 3 3s-1.3 3-3 3-3-1.3-3-3 1.3-3 3-3zm4.5-3c-.3 0-.5.2-.5.5s.2.5.5.5.5-.2.5-.5S16.8 6 16.5 6z"/></svg></a>
+
 <a href="https://x.com/meranivishal" target="_blank" aria-label="Twitter">
-<svg class="icon" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.59-2.46.7a4.18 4.18 0 001.84-2.3 8.1 8.1 0 01-2.6 1A4.1 4.1 0 0012 8.13v.5C8.23 8.3 5.1 6.47 3.1 3.8c-.9 1.55-.4 3.5 1.1 4.5-.7 0-1.4-.2-2-.5v.05c0 2 1.4 3.8 3.3 4.2-.4.1-.9.2-1.3.2-.3 0-.6 0-.8-.05.6 1.8 2.3 3 4.3 3.1A8.3 8.3 0 012 19c1.5 1 3.3 1.5 5.2 1.5 6.3 0 9.7-5.2 9.7-9.7v-.4A7.1 7.1 0 0022.46 6z"/></svg>
-</a>
+<svg class="icon" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.59-2.46.7a4.18 4.18 0 001.84-2.3 8.1 8.1 0 01-2.6 1A4.1 4.1 0 0012 8.13v.5C8.23 8.3 5.1 6.47 3.1 3.8c-.9 1.55-.4 3.5 1.1 4.5-.7 0-1.4-.2-2-.5v.05c0 2 1.4 3.8 3.3 4.2-.4.1-.9.2-1.3.2-.3 0-.6 0-.8-.05.6 1.8 2.3 3 4.3 3.1A8.3 8.3 0 012 19c1.5 1 3.3 1.5 5.2 1.5 6.3 0 9.7-5.2 9.7-9.7v-.4A7.1 7.1 0 0022.46 6z"/></svg></a>
+
 <a href="https://in.linkedin.com/in/vishal-merani" target="_blank" aria-label="LinkedIn">
-<svg class="icon" viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4v12h-4V8zm7 0h3.6v1.7h.1c.5-1 1.7-2 3.4-2 3.6 0 4.3 2.3 4.3 5.2V20h-4v-5.3c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V20h-4V8z"/></svg>
-</a>
-<a href="https://vishalmerani.blogspot.com/" target="_blank" aria-label="Blogspot">
-<svg class="icon" viewBox="0 0 24 24"><path d="M19.6 9.2c-.2-.2-.4-.4-.5-.6-.4-.6-.5-1.2-.5-1.9C18.6 3.5 15.6 1 12 1H8C4.7 1 2 3.7 2 7v10c0 3.3 2.7 6 6 6h8c3.3 0 6-2.7 6-6v-4c0-1.4-.6-2.6-1.4-3.6zM10 9h3c.6 0 1 .4 1 1s-.4 1-1 1h-3c-.6 0-1-.4-1-1s.4-1 1-1zm4 7h-4c-.6 0-1-.4-1-1s.4-1 1-1h4c.6 0 1 .4 1 1s-.4 1-1 1z"/></svg>
-</a>
-<a href="https://www.facebook.com/meranivishal" target="_blank" aria-label="Facebook">
-<svg class="icon" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.99 3.66 9.12 8.44 9.88v-6.99H7.9v-2.89h2.54V9.41c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.45h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.89h-2.34v6.99C18.34 21.12 22 16.99 22 12z"/></svg>
-</a>
-
-<a href="https://www.quora.com/profile/Vishal-Merani" target="_blank" aria-label="Quora">
-<svg class="icon" viewBox="0 0 24 24"><path d="M12.01 2C6.48 2 2 6.48 2 12c0 5.08 3.82 9.25 8.76 9.9.19-.63.45-1.34.8-1.95-2.68-.38-4.45-1.83-5.07-4.24 1.14.54 2.13.72 3.09.73-2.3-1.29-3.2-3.49-2.9-5.71.53-4.12 5.16-5.42 8.02-3.37 1.59 1.15 2.4 2.78 2.34 5.09-.07 2.46-1.19 4.24-3.11 4.86-.68.22-1.32.19-2.02.1.49.59.88 1.27 1.14 2.13 4.86-1.01 8.25-5.08 8.25-9.91 0-5.52-4.48-10-9.99-10z"/></svg>
-</a>
-
+<svg class="icon" viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4v12h-4V8zm7 0h3.6v1.7h.1c.5-1 1.7-2 3.4-2 3.6 0 4.3 2.3 4.3 5.2V20h-4v-5.3c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V20h-4V8z"/></svg></a>
 
 </div>
 
 <div class="footer">♡ Let's pray, chant, meditate, sing, dance, share, help one another - one post at a time.<br>ॐ Jai Guru Dev ॐ</div>
 </div>
-
-
-
-<script>
-function copyToClipboard(id, btn) {
-const input = document.getElementById(id);
-input.select();
-input.setSelectionRange(0, 99999);
-navigator.clipboard.writeText(input.value);
-btn.innerText = "Copied!";
-setTimeout(() => btn.innerText = "Copy", 1500);
-
-// Update WhatsApp link
-const waLink = document.querySelector(`#waLink${id.slice(-1)}`);
-const msg = encodeURIComponent(input.value);
-waLink.href = `https://wa.me/?text=${msg}`;
-}
-</script>
 
 <script>
 const moonIcon = document.getElementById("moon-icon");
@@ -576,36 +282,9 @@ document.documentElement.style.setProperty('--location-color', darkMode ? '#b69a
 document.documentElement.style.setProperty('--muted', darkMode ? '#aaa' : '#777');
 document.documentElement.style.setProperty('--border', darkMode ? '#444' : '#d9e1ec');
 document.documentElement.style.setProperty('--box-bg', darkMode ? '#2c2c2e' : '#ffffff');
-
-// Update accent and button contrast for dark
-document.querySelectorAll('.button').forEach(btn => {
-btn.style.backgroundColor = darkMode ? '#6a5795' : 'var(--accent)';
-btn.style.color = darkMode ? '#1c1c1e' : 'white';
-
-
-});
-
-// Update input backgrounds
-document.querySelectorAll('.copy-input').forEach(input => {
-input.style.backgroundColor = darkMode ? '#3a3a3c' : '#f9fafc';
-input.style.color = darkMode ? '#b69ad4' : '#1c1c1e';
-});
-
-document.querySelectorAll('.copy-btn').forEach(btn => {
-btn.style.backgroundColor = darkMode ? '#3a2e57' : '#E6E6FA'; // Optional: deeper purple bg
-btn.style.color = darkMode ? '#b69ad4' : '#333';
-
-
-});
-
-// Optional: rotate the moon icon on toggle
 moonIcon.style.transform = darkMode ? "rotate(180deg)" : "rotate(0deg)";
 });
-
 </script>
-</ul>
-</ul>  
 
-  
 </body>
 </html>
