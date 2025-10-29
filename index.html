@@ -33,7 +33,7 @@ padding: 22px 14px;
 .iphone-frame {
 background: var(--box-bg);
 border-radius: 36px;
-max-width: 230px;
+max-width: 390px;
 width: 100%;
 margin: 0 auto 32px auto;
 box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
@@ -174,81 +174,44 @@ line-height: 1.2;
 }
 
 .iphone-frame {
-  position: relative;
-  aspect-ratio: 9 / 16;
-  max-width: 230px;
-  width: 100%;
-  background: #fff;
-  border-radius: 28px;
-  overflow: hidden;
-  padding: 28px 20px;
-  margin: 0 auto 32px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 10px;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  color: #2e2e2e;
+position: relative;
+z-index: 1;
+border-radius: 36px;
+overflow: hidden;
+border: 1px solid var(--border); /* keep existing border */
+box-shadow: 0 0 0.5px rgba(144, 137, 245, 0.5);
 }
 
-/* Headings — clean, spaced, and elegant */
-.iphone-frame h1,
-.iphone-frame h2,
-.iphone-frame h3 {
-  font-weight: 600;
-  letter-spacing: -0.2px;
-  margin: 0;
+.iphone-frame::after {
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+border-radius: 32px;
+pointer-events: none;
+z-index: -1;
+border: 1.5px solid transparent;
+background: linear-gradient(135deg, #9089f5, #f093fb, #9089f5) border-box;
+mask: 
+linear-gradient(#fff 0 0) padding-box, 
+linear-gradient(#fff 0 0);
+-webkit-mask: 
+linear-gradient(#fff 0 0) padding-box, 
+linear-gradient(#fff 0 0);
+mask-composite: exclude;
+-webkit-mask-composite: destination-out;
+animation: subtlePulse 6s ease-in-out infinite;
 }
 
-/* Subtle gray subtitles */
-.iphone-frame p.subtitle {
-  color: #6c6c6c;
-  font-size: 0.95em;
-  margin-top: 2px;
+@keyframes subtlePulse {
+0%, 100% {
+opacity: 0.2;
 }
-
-/* Feature list */
-.iphone-frame ul {
-  list-style: none;
-  padding: 0;
-  margin: 8px 0 4px;
+50% {
+opacity: 0.4;
 }
-
-.iphone-frame li {
-  margin-bottom: 4px;
-  color: #444;
-  font-size: 0.95em;
-}
-
-/* Highlighted time or CTA text — softer glow */
-.glow {
-  font-weight: 600;
-  background: linear-gradient(90deg, #d07bff, #ff94a4);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 8px rgba(255, 180, 220, 0.3));
-  font-size: 1.05em;
-}
-
-/* Icons inline look cleaner */
-.iphone-frame .icon-text {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  color: #555;
-}
-
-/* Smooth fade-in for all cards */
-.iphone-frame {
-  animation: fadeIn 0.6s ease forwards;
-  opacity: 0;
-}
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 
 .copy-input, .copy-btn {
@@ -608,7 +571,6 @@ moonIcon.style.transform = darkMode ? "rotate(180deg)" : "rotate(0deg)";
 </script>
 </ul>
 </ul>  
-
 
   
 </body>
