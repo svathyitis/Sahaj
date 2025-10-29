@@ -174,13 +174,41 @@ line-height: 1.2;
 }
 
 .iphone-frame {
-position: relative;
-z-index: 1;
-border-radius: 36px;
-overflow: hidden;
-border: 1px solid var(--border); /* keep existing border */
-box-shadow: 0 0 0.5px rgba(144, 137, 245, 0.5);
+  position: relative;
+  width: 100%;
+  max-width: 230px; /* matches video width */
+  aspect-ratio: 9 / 16; /* same vertical ratio */
+  border-radius: 24px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
+
+  .iphone-frame h1, 
+.iphone-frame h2, 
+.iphone-frame h3, 
+.iphone-frame p {
+  text-align: center;
+  margin: 6px 0;
+}
+
+.iphone-frame ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+  font-size: 0.9em;
+}
+
+.iphone-frame li {
+  margin-bottom: 4px;
+}
+
 
 .iphone-frame::after {
 content: "";
