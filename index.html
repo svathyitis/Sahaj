@@ -79,6 +79,8 @@ animation: subtlePulse 6s ease-in-out infinite;
     background: #000 !important;
     border: none;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    /* CRITICAL FIX: Ensures the container has height even if the video doesn't load */
+    height: 200px;
 }
 
 /* --- Typography etc. --- */
@@ -171,13 +173,12 @@ color: #ffcc00; /* Gold */
 fill: #ffcc00; /* Gold in dark mode */
 }
 
-/* --- 5. CHRISTMAS SNOWFALL STYLE (Internal to card) --- */
+/* --- 5. CHRISTMAS SNOWFALL STYLE (Internal to card, slow) --- */
 .snowflake {
   color: #fff;
   font-size: 0.7em; /* Small size for internal snow */
   font-family: Arial, sans-serif;
   text-shadow: 0 0 5px rgba(0,0,0,0.1);
-  /* CRITICAL: Changed to absolute for internal positioning */
   position: absolute; 
   top: -20px;
   z-index: 10000;
@@ -188,7 +189,6 @@ fill: #ffcc00; /* Gold in dark mode */
 
 @keyframes fall {
   0% { transform: translateY(0) translateX(0); }
-  /* Changed to percentage to fall relative to the card's height */
   100% { transform: translateY(100%) translateX(0); } 
 }
 /* --- END CHRISTMAS SNOWFALL STYLE --- */
@@ -226,7 +226,7 @@ gtag('config', 'G-QL72FZ9YZ2');
       outline: none;
     "
   ></video>
-    <div style="position: absolute; top: 15px; left: 15px; z-index: 10001;">
+    <div style="position: absolute; top: 15px; left: 15px; z-index: 10001; color: white;">
         <span class="xmas-icon">🦌</span> 
         <span class="xmas-icon">🛒</span> 
     </div>
