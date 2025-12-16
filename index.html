@@ -20,12 +20,18 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+/* --- NEW: EMOJI SIZING FIX --- */
+.xmas-icon {
+    font-size: 0.8em; 
+    margin: 0 3px;
+    display: inline-block;
+}
+
 body {
 font-family: 'Inter', sans-serif;
 background: var(--bg);
 color: var(--text);
 padding: 22px 14px;
-/* Add a subtle green gradient for a festive look */
 background: linear-gradient(to bottom, var(--bg), #ccffcc33);
 }
 
@@ -39,10 +45,10 @@ margin: 0 auto 32px auto;
 box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
 padding: 26px 20px;
 border: 1px solid var(--border);
-position: relative;
+/* CRITICAL for internal snowfall */
+position: relative; 
 z-index: 1;
-overflow: hidden;
-/* Added Red shadow for festive feel */
+overflow: hidden; 
 box-shadow: 0 8px 30px rgba(198, 40, 40, 0.15);
 }
 
@@ -54,7 +60,6 @@ border-radius: 32px;
 pointer-events: none;
 z-index: -1;
 border: 1.5px solid transparent;
-/* --- 2. FESTIVE GRADIENT UPDATE (Red, Green, Gold) --- */
 background: linear-gradient(135deg, #c62828, #004d40, #ffd700) border-box;
 mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
 -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
@@ -113,7 +118,6 @@ margin-bottom: 0.5rem;
 line-height: 1.2;
 }
 
-/* --- 3. Neon time text update (Red/Green/Gold theme) --- */
 .neon-time {
 color: #c62828; /* Deep Red */
 font-weight: 600;
@@ -167,23 +171,25 @@ color: #ffcc00; /* Gold */
 fill: #ffcc00; /* Gold in dark mode */
 }
 
-/* --- 5. CHRISTMAS SNOWFALL STYLE --- */
+/* --- 5. CHRISTMAS SNOWFALL STYLE (Internal to card) --- */
 .snowflake {
   color: #fff;
-  font-size: 1.2em;
+  font-size: 0.7em; /* Small size for internal snow */
   font-family: Arial, sans-serif;
   text-shadow: 0 0 5px rgba(0,0,0,0.1);
-  position: fixed;
+  /* CRITICAL: Changed to absolute for internal positioning */
+  position: absolute; 
   top: -20px;
   z-index: 10000;
   pointer-events: none;
-  opacity: 0.8;
-  animation: fall 10s linear infinite;
+  opacity: 0.6; /* Very subtle */
+  animation: fall 15s linear infinite; /* Slower fall */
 }
 
 @keyframes fall {
   0% { transform: translateY(0) translateX(0); }
-  100% { transform: translateY(100vh) translateX(0); }
+  /* Changed to percentage to fall relative to the card's height */
+  100% { transform: translateY(100%) translateX(0); } 
 }
 /* --- END CHRISTMAS SNOWFALL STYLE --- */
 </style>
@@ -205,10 +211,9 @@ gtag('config', 'G-QL72FZ9YZ2');
 </svg>
 </div>
 
-<div class="iphone-frame video-showcase">
+<div class="iphone-frame video-showcase" id="video-card">
   <video 
     src="https://files.catbox.moe/1ftwsg.mp4"
-    controls
     playsinline
     preload="metadata"
     autoplay loop muted 
@@ -221,13 +226,17 @@ gtag('config', 'G-QL72FZ9YZ2');
       outline: none;
     "
   ></video>
+    <div style="position: absolute; top: 15px; left: 15px; z-index: 10001;">
+        <span class="xmas-icon">🦌</span> 
+        <span class="xmas-icon">🛒</span> 
+    </div>
 </div>
 
 
-<div class="iphone-frame">
-<h1>🎁 Merry Xmas! 🎅🦌</h1>
+<div class="iphone-frame" id="oct-card">
+<h1><span class="xmas-icon">🎁</span> Merry Xmas! <span class="xmas-icon">🎅</span><span class="xmas-icon">🦌</span></h1>
 <p class="subtitle">Sunday Sahaj </p>
-<h3>🎄 Master meditation in mins </h3>
+<h3><span class="xmas-icon">🎄</span> Master meditation in mins </h3>
 <p class="subtitle">Breathe Calm </p>
 <ul class="features">
 <li>⤷ Float Free </li>
@@ -239,7 +248,7 @@ gtag('config', 'G-QL72FZ9YZ2');
 <li>Sunday, 26 Oct 2025</li> 
 <li class="time-row"><span class="neon-time">7-7:40 PM</span></li>
 <ul class="timeline">
-<li>🥣 Happening monthly</li>
+<li><span class="xmas-icon">🥣</span> Happening monthly</li>
 <li>Meeting ID: 837 0631 9575 </li>
 <li> DM for password or link </li>
 <li class="location-text"><strong>📍 Zoom | Online</strong></li>
@@ -249,10 +258,10 @@ gtag('config', 'G-QL72FZ9YZ2');
 <div class="footer"> 🙈 40 min only | ♡ Online Session <br> ॐ Jai Guru Dev ॐ </div> 
 </div>
 
-<div class="iphone-frame">
-<h1>Dec Sahaj 🦌</h1>
+<div class="iphone-frame" id="dec-card">
+<h1>Dec Sahaj <span class="xmas-icon">🦌</span></h1>
 <p class="subtitle">with Vishal Merani/ Team</p>
-<h3>🧦 Lapse into meditation in minutes</h3>
+<h3><span class="xmas-icon">🧦</span> Lapse into meditation in minutes</h3>
 <p class="subtitle">Feel Good 😌 Live Light 🪶</p>
 <ul class="features">
 <li>⤷ Personal</li><li>⤷ Customized</li><li>⤷ Yours</li></ul>
@@ -271,8 +280,8 @@ gtag('config', 'G-QL72FZ9YZ2');
 <div class="footer"> 😌 3 days, 2 hours a day | ♡ Online Sessions <br> ॐ Jai Guru Dev ॐ </div>
 </div>
 
-<div class="iphone-frame" style="text-align:center;padding-top:24px;">
-<h1>To stay connected, 🎄</h1>
+<div class="iphone-frame" style="text-align:center;padding-top:24px;" id="social-card">
+<h1>To stay connected, <span class="xmas-icon">🎄</span></h1>
 <h2>@MeraniVishal</h2>
 <p class="subtitle">Explore insights, updates & posts</p>
 
@@ -300,54 +309,60 @@ darkMode = !darkMode;
 document.body.classList.toggle("dark", darkMode);
 
 // --- 4. UPDATED DARK MODE COLORS FOR CHRISTMAS ---
-document.documentElement.style.setProperty('--bg', darkMode ? '#1a1a1a' : '#f0f8ff'); // Dark Greenish-Black or Snow White
-document.documentElement.style.setProperty('--text', darkMode ? '#f5f5dc' : '#004d40'); // Cream/White or Deep Green
-document.documentElement.style.setProperty('--location-color', darkMode ? '#ffcc00' : '#c62828'); // Gold or Red
+document.documentElement.style.setProperty('--bg', darkMode ? '#1a1a1a' : '#f0f8ff'); 
+document.documentElement.style.setProperty('--text', darkMode ? '#f5f5dc' : '#004d40'); 
+document.documentElement.style.setProperty('--location-color', darkMode ? '#ffcc00' : '#c62828'); 
 document.documentElement.style.setProperty('--muted', darkMode ? '#aaa' : '#777');
-document.documentElement.style.setProperty('--border', darkMode ? '#555' : '#ffd70044'); // Dark Grey or Light Gold
-document.documentElement.style.setProperty('--accent', darkMode ? '#880000' : '#c62828'); // Dark Red or Deep Red
-document.documentElement.style.setProperty('--accent-hover', darkMode ? '#b30000' : '#e53935'); // Darker Red or Brighter Red
-document.documentElement.style.setProperty('--box-bg', darkMode ? '#333333' : '#ffffff'); // Dark Grey box or White
+document.documentElement.style.setProperty('--border', darkMode ? '#555' : '#ffd70044'); 
+document.documentElement.style.setProperty('--accent', darkMode ? '#880000' : '#c62828'); 
+document.documentElement.style.setProperty('--accent-hover', darkMode ? '#b30000' : '#e53935'); 
+document.documentElement.style.setProperty('--box-bg', darkMode ? '#333333' : '#ffffff'); 
 
 // Update moon icon stroke color
-moonIcon.style.stroke = darkMode ? '#f5f5dc' : '#c62828'; // Red/Cream for icon
+moonIcon.style.stroke = darkMode ? '#f5f5dc' : '#c62828'; 
 moonIcon.style.transform = darkMode ? "rotate(180deg)" : "rotate(0deg)";
 });
 </script>
 
 <script>
-function createSnowflake() {
+function createSnowflake(targetElement) {
   const snowflake = document.createElement('div');
   snowflake.innerHTML = '❄️'; // Snowflake emoji
   snowflake.classList.add('snowflake');
   
   // Set random starting position, size, and duration
-  const startX = Math.random() * window.innerWidth;
-  const size = Math.random() * 1.5 + 0.8; // between 0.8em and 2.3em
-  const duration = Math.random() * 8 + 6; // between 6s and 14s
-  const delay = Math.random() * 10; // delay between 0s and 10s
+  const width = targetElement.offsetWidth;
+  const startX = Math.random() * width;
+  const size = Math.random() * 0.4 + 0.6; // between 0.6em and 1.0em (small and subtle)
+  const duration = Math.random() * 10 + 15; // Slower fall: between 15s and 25s
+  const delay = Math.random() * 15; // long initial delay for staggered start
   
   snowflake.style.left = `${startX}px`;
   snowflake.style.fontSize = `${size}em`;
   snowflake.style.animationDuration = `${duration}s`;
   snowflake.style.animationDelay = `${delay}s`;
-  snowflake.style.opacity = Math.random() * 0.5 + 0.3; // subtle opacity
+  snowflake.style.opacity = Math.random() * 0.3 + 0.2; // very subtle opacity
 
-  document.body.appendChild(snowflake);
+  targetElement.appendChild(snowflake);
 
-  // Clean up element after it falls (1 second after duration ends)
+  // Clean up element after it falls
   setTimeout(() => {
     snowflake.remove();
   }, (duration + 1) * 1000);
 }
 
-// Initial burst of snowflakes
-for (let i = 0; i < 30; i++) {
-    setTimeout(createSnowflake, i * 400); // Stagger initial flakes
-}
+// Target all card elements
+const cardTargets = document.querySelectorAll('.iphone-frame');
 
-// Continuous snowflake creation (every 500ms)
-setInterval(createSnowflake, 500);
+// Start the internal snowfall effect on each card
+cardTargets.forEach(card => {
+    // Initial burst of very slow, subtle snowflakes for each card
+    for (let i = 0; i < 5; i++) {
+        setTimeout(() => createSnowflake(card), Math.random() * 5000); 
+    }
+    // Continuous snowflake creation (very slow interval for subtlety)
+    setInterval(() => createSnowflake(card), 6000 + Math.random() * 4000); // 6s to 10s interval
+});
 </script>
 
 </body>
