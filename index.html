@@ -79,7 +79,7 @@ animation: subtlePulse 6s ease-in-out infinite;
     background: #000 !important;
     border: none;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-    /* CRITICAL FIX: Ensures the container has height even if the video doesn't load */
+    /* CRITICAL FIX: Ensures the container has height */
     height: 200px;
 }
 
@@ -212,6 +212,7 @@ gtag('config', 'G-QL72FZ9YZ2');
 </div>
 
 <div class="iphone-frame video-showcase" id="video-card">
+  
   <video 
     src="https://files.catbox.moe/1ftwsg.mp4"
     playsinline
@@ -220,12 +221,16 @@ gtag('config', 'G-QL72FZ9YZ2');
     style="
       width: 100%;
       height: 100%;
+      position: absolute; /* Ensures it fills the parent container completely */
+      top: 0;
+      left: 0;
       object-fit: cover;
       display: block;
       border: none;
       outline: none;
     "
   ></video>
+    
     <div style="position: absolute; top: 15px; left: 15px; z-index: 10001; color: white;">
         <span class="xmas-icon">🦌</span> 
         <span class="xmas-icon">🛒</span> 
