@@ -4,7 +4,7 @@
 <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Sahaj with VM - Merry Christmas!</title>
+<title>Sahaj with VM - Merry Christmas! 🦌</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
 <style>
 /* --- 1. CHRISTMAS COLOR PALETTE UPDATE --- */
@@ -68,27 +68,12 @@ animation: subtlePulse 6s ease-in-out infinite;
 50% { opacity: 0.8; }
 }
 
-/* --- Video Card (matches design) --- */
-.video-card {
-position: relative;
-width: 100%;
-max-width: 390px;
-aspect-ratio: 9 / 16;
-margin: 0 auto 32px auto;
-border-radius: 36px;
-border: 1px solid var(--border);
-background: var(--box-bg);
-box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-overflow: hidden;
-}
-
-.video-card video {
-width: 100%;
-height: 100%;
-object-fit: cover;
-border: none;
-outline: none;
-display: block;
+/* --- Video Card Fix: Ensures video is edge-to-edge and black --- */
+.video-showcase.iphone-frame {
+    padding: 0 !important;
+    background: #000 !important;
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 
 /* --- Typography etc. --- */
@@ -181,8 +166,6 @@ color: #ffcc00; /* Gold */
 .dark .icon {
 fill: #ffcc00; /* Gold in dark mode */
 }
-/* Dark mode styles for dynamic variables are in the script */
-
 
 /* --- 5. CHRISTMAS SNOWFALL STYLE --- */
 .snowflake {
@@ -222,8 +205,8 @@ gtag('config', 'G-QL72FZ9YZ2');
 </svg>
 </div>
 
-<div class="iphone-frame" style="padding: 0; background: #000; overflow: hidden;">
-  <video 
+<div class="iphone-frame video-showcase">
+  <video 
     src="https://files.catbox.moe/1ftwsg.mp4"
     controls
     playsinline
@@ -241,9 +224,9 @@ gtag('config', 'G-QL72FZ9YZ2');
 
 
 <div class="iphone-frame">
-<h1>🎁 Merry Xmas! 🎅</h1>
+<h1>🎁 Merry Xmas! 🎅🦌</h1>
 <p class="subtitle">Sunday Sahaj </p>
-<h3> Master meditation in mins </h3>
+<h3>🎄 Master meditation in mins </h3>
 <p class="subtitle">Breathe Calm </p>
 <ul class="features">
 <li>⤷ Float Free </li>
@@ -252,23 +235,23 @@ gtag('config', 'G-QL72FZ9YZ2');
 </ul>
 <h4>Pick your preference</h4>
 <ul class="features">
-<li>Sunday, 26 Oct 2025</li> 
+<li>Sunday, 31 Dec 2025</li> 
 <li class="time-row"><span class="neon-time">7-7:40 PM</span></li>
 <ul class="timeline">
-<li>Happening monthly</li>
+<li>🥣 Happening monthly</li>
 <li>Meeting ID: 837 0631 9575 </li>
 <li> DM for password or link </li>
 <li class="location-text"><strong>📍 Zoom | Online</strong></li>
 </ul>
-<li class="time-row"><span class="neon-time">’Til Nov! 👋</span></li>
+<li class="time-row"><span class="neon-time">’Til Dec! 👋</span></li>
 <h4 class="queries-text">Queries & help 9818503888</h4>
 <div class="footer"> 🙈 40 min only | ♡ Online Session <br> ॐ Jai Guru Dev ॐ </div> 
 </div>
 
 <div class="iphone-frame">
-<h1>Dec Sahaj </h1>
+<h1>Dec Sahaj 🦌</h1>
 <p class="subtitle">with Vishal Merani/ Team</p>
-<h3>Lapse into meditation in minutes</h3>
+<h3>🧦 Lapse into meditation in minutes</h3>
 <p class="subtitle">Feel Good 😌 Live Light 🪶</p>
 <ul class="features">
 <li>⤷ Personal</li><li>⤷ Customized</li><li>⤷ Yours</li></ul>
@@ -288,7 +271,7 @@ gtag('config', 'G-QL72FZ9YZ2');
 </div>
 
 <div class="iphone-frame" style="text-align:center;padding-top:24px;">
-<h1>To stay connected,</h1>
+<h1>To stay connected, 🎄</h1>
 <h2>@MeraniVishal</h2>
 <p class="subtitle">Explore insights, updates & posts</p>
 
